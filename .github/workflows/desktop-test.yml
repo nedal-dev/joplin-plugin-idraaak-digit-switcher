@@ -1,0 +1,49 @@
+name: Real Joplin desktop test
+on:
+  push:
+    paths:
+      - 'integration/**'
+      - 'src/**'
+      - '.github/workflows/desktop-test.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  desktop:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts
+      - run: npm run check && npm run dist && npm test
+      - run: npm ci --ignore-scripts --prefix integration
+      - name: Install desktop test dependencies
+        run: npx --prefix integration playwright install-deps chromium
+      - name: Download official Joplin 3.7.21
+        run: |
+          curl --fail --location --retry 3 'https://objects.joplinusercontent.com/v3.7.21/Joplin-3.7.21.AppImage?source=JoplinWebsite&type=New' --output Joplin.AppImage
+          sha256sum Joplin.AppImage | tee joplin-appimage.sha256
+          chmod +x Joplin.AppImage
+          ./Joplin.AppImage --appimage-extract >/dev/null
+          sudo chown root:root squashfs-root/chrome-sandbox
+          sudo chmod 4755 squashfs-root/chrome-sandbox
+      - name: Test actual Joplin UI and clipboard in a separate profile
+        env:
+          JOPLIN_EXECUTABLE: ${{ github.workspace }}/squashfs-root/joplin
+        run: xvfb-run -a --server-args='-screen 0 1600x1200x24' node integration/desktop.cjs
+      - name: Save real desktop test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: joplin-desktop-test-evidence
+          path: |
+            desktop-artifacts/*.png
+            desktop-artifacts/*.json
+            desktop-artifacts/*.html
+            desktop-artifacts/*.log
+            desktop-artifacts/development-profile/log*.txt
+            joplin-appimage.sha256
+          retention-days: 14
