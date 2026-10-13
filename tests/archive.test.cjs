@@ -1,0 +1,23 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const crypto = require('node:crypto');
+const tar = require('tar');
+const root = path.resolve(__dirname, '..');
+test('npm discovery metadata and generated archive match the source manifest', async () => {
+  const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json')));
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, 'src/manifest.json')));
+  const infoPath = path.join(root, 'publish', manifest.id + '.json');
+  const archivePath = path.join(root, 'publish', manifest.id + '.jpl');
+  assert.ok(pkg.name.startsWith('joplin-plugin-'));
+  assert.ok(pkg.keywords.includes('joplin-plugin'));
+  assert.equal(pkg.version, manifest.version);
+  const info = JSON.parse(fs.readFileSync(infoPath));
+  assert.equal(info._publish_hash, 'sha256:' + crypto.createHash('sha256').update(fs.readFileSync(archivePath)).digest('hex'));
+  for (const key of Object.keys(manifest)) assert.deepEqual(info[key], manifest[key]);
+  const entries = [];
+  await tar.list({ file: archivePath, onentry: entry => entries.push(entry.path) });
+  for (const required of ['index.js', 'manifest.json', 'webviews/preview.js', 'webviews/preview.css']) assert.ok(entries.includes(required), required);
+  assert.ok(entries.every(entry => !entry.includes('..') && !path.isAbsolute(entry)));
+});
