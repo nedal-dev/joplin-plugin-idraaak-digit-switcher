@@ -1,0 +1,8 @@
+#digit-switcher { box-sizing: border-box; width: min(640px, 78vw); padding: 16px; color: var(--joplin-color); font-family: var(--joplin-font-family); }
+#digit-switcher h1 { font-size: 21px; margin: 0 0 12px; }
+#digit-switcher p { line-height: 1.5; }
+#digit-switcher label { display: block; font-weight: 600; margin: 16px 0 6px; }
+#digit-switcher textarea { box-sizing: border-box; width: 100%; min-height: 120px; resize: vertical; padding: 10px; white-space: pre-wrap; font: 15px/1.6 monospace; color: var(--joplin-color); background: var(--joplin-background-color); border: 1px solid var(--joplin-divider-color, #999); border-radius: 4px; }
+#digit-switcher select { box-sizing: border-box; max-width: 100%; padding: 8px; color: var(--joplin-color); background: var(--joplin-background-color); border: 1px solid var(--joplin-divider-color, #999); border-radius: 4px; }
+#digit-switcher :focus-visible { outline: 2px solid var(--joplin-color, #3578b5); outline-offset: 2px; }
+#privacy { font-size: 12px; }
