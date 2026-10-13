@@ -38,7 +38,7 @@ The output is a snapshot of the selection when the command opens. Closing the di
 
 ## Install the development build
 
-Build from source using the commands in [DEVELOPMENT.md](DEVELOPMENT.md), or use the generated `publish/com.idraaak.digitSwitcher.jpl` archive. Test in Joplin's separate development profile. See the mandatory desktop test procedure in [DEVELOPMENT.md](DEVELOPMENT.md). A screenshot will be added after that real test; no simulated screenshot is presented as Joplin usage.
+Build from source using the commands in [DEVELOPMENT.md](https://github.com/nedal-dev/joplin-plugin-idraaak-digit-switcher/blob/main/DEVELOPMENT.md), or use the generated `publish/com.idraaak.digitSwitcher.jpl` archive. Test in Joplin's separate development profile. That development guide includes the mandatory desktop test procedure. A screenshot will be added after that real test; no simulated screenshot is presented as Joplin usage.
 
 ## Privacy
 
@@ -50,8 +50,8 @@ Conversion runs locally. The plugin makes no network requests, uses no external 
 
 ## Development and license
 
-Built with the official Joplin plugin scaffolding. See [DEVELOPMENT.md](DEVELOPMENT.md) for tests, build commands and release checks. Contributions and reproducible bug reports are welcome in the repository's issue tracker. When reporting a problem, use a small sample with no private note content.
+Built with the official Joplin plugin scaffolding. See [DEVELOPMENT.md](https://github.com/nedal-dev/joplin-plugin-idraaak-digit-switcher/blob/main/DEVELOPMENT.md) for tests, build commands and release checks. Contributions and reproducible bug reports are welcome in the repository's issue tracker. When reporting a problem, use a small sample with no private note content.
 
-MIT licensed; see [LICENSE](LICENSE).
+MIT licensed; see [LICENSE](https://github.com/nedal-dev/joplin-plugin-idraaak-digit-switcher/blob/main/LICENSE).
 
 Developed by [Idraaak](https://idraaak.com/)
