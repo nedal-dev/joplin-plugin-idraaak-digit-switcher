@@ -12,7 +12,9 @@ npm pack --dry-run --ignore-scripts
 
 The unit and mocked-host tests do **not** replace a real desktop test.
 
-## Mandatory real Joplin test before npm publication
+## Real Joplin desktop validation (pending)
+
+The initial release proceeds with automated validation only. A Linux test launched official Joplin 3.7.21 in an isolated development profile, but timed out before reaching the Markdown editor. This is not a successful desktop test. No simulated image is presented as a genuine Joplin screenshot. The procedure below remains outstanding.
 
 1. Install Joplin desktop from its official website. This plugin declares Joplin 3.7 or later; record the exact version tested.
 2. In Joplin, use **Help → Copy dev mode command to clipboard**. Run that command to open its separate development profile. Do not test in a normal notes profile.
@@ -35,7 +37,7 @@ The unit and mocked-host tests do **not** replace a real desktop test.
 
 The official publishing instructions checked on 2026-10-13 require an npm package whose name starts with `joplin-plugin-`, whose keywords include `joplin-plugin`, and whose `publish/` directory contains the generated `.jpl` and `.json` files.
 
-After the real desktop test and screenshot are complete, authenticate to the approved npm account interactively, check `npm whoami`, inspect `npm pack --dry-run`, and run `npm publish --access public`. Never place tokens or passwords in this repository.
+Authenticate to the approved npm account interactively, check `npm whoami`, inspect `npm pack --dry-run`, and run `npm publish --access public`. Never place tokens or passwords in this repository. Keep the incomplete desktop validation and missing genuine screenshot explicit in README until those checks actually pass.
 
 Verify the npm package contents and version after publishing. The official plugin repository states that it updates every 30 minutes. Verify the manifest and archive in `joplin/plugins`, then the actual Joplin directory page. Do not mark the task complete while any required step is pending.
 

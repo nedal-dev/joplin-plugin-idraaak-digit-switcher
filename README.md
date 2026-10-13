@@ -2,7 +2,7 @@
 
 Preview and copy selected Markdown text using the digit style you need, entirely offline.
 
-**Status:** development build 0.1.0. Automated conversion and mocked integration tests are available. A real Joplin desktop test and genuine usage screenshot are still required before npm publication. This plugin is not yet listed in the official Joplin directory.
+**Validation:** initial release 0.1.0. All 23 automated conversion, preview, mocked-host and archive tests pass. Actual Joplin desktop validation is incomplete: the Linux UI test launched Joplin 3.7.21 but timed out before reaching the Markdown editor. A genuine usage screenshot is still pending. Please report reproducible desktop issues in the repository.
 
 ## What it does
 
@@ -36,9 +36,9 @@ The first version targets **Joplin desktop 3.7+ and its Markdown editor**. Mobil
 
 The output is a snapshot of the selection when the command opens. Closing the dialog without copying leaves the clipboard unchanged.
 
-## Install the development build
+## Install
 
-Build from source using the commands in [DEVELOPMENT.md](https://github.com/nedal-dev/joplin-plugin-idraaak-digit-switcher/blob/main/DEVELOPMENT.md), or use the generated `publish/com.idraaak.digitSwitcher.jpl` archive. Test in Joplin's separate development profile. That development guide includes the mandatory desktop test procedure. A screenshot will be added after that real test; no simulated screenshot is presented as Joplin usage.
+Build from source using the commands in [DEVELOPMENT.md](https://github.com/nedal-dev/joplin-plugin-idraaak-digit-switcher/blob/main/DEVELOPMENT.md), or download the npm package `joplin-plugin-idraaak-digit-switcher` and extract `publish/com.idraaak.digitSwitcher.jpl`. In Joplin, open **Configuration → Plugins → Install from file**, select the `.jpl` archive and restart Joplin. Start with a disposable note in a separate development profile while desktop validation remains pending. Official directory availability must be checked separately from npm publication.
 
 ## Privacy
 
@@ -46,7 +46,7 @@ Conversion runs locally. The plugin makes no network requests, uses no external 
 
 ## شرح عربي مختصر
 
-حدّد نصًا في محرر Markdown في Joplin، ثم افتح أمر الإضافة من قائمة الأدوات واختر شكل الأرقام. راجع المعاينة وانسخ النتيجة. يتحوّل شكل محارف الأرقام فقط، مع الحفاظ على الأصفار الأولية والنص وعلامات الترقيم، ولا تتغير الملاحظة الأصلية. تعمل الإضافة محليًا دون إنترنت أو تتبع. هذا إصدار تطوير ما زال ينتظر الاختبار الفعلي داخل Joplin قبل النشر الرسمي.
+حدّد نصًا في محرر Markdown في Joplin، ثم افتح أمر الإضافة من قائمة الأدوات واختر شكل الأرقام. راجع المعاينة وانسخ النتيجة. يتحوّل شكل محارف الأرقام فقط، مع الحفاظ على الأصفار الأولية والنص وعلامات الترقيم، ولا تتغير الملاحظة الأصلية. تعمل الإضافة محليًا دون إنترنت أو تتبع. نجحت الاختبارات الآلية، لكن الاختبار الفعلي داخل Joplin لم يكتمل؛ يُنصح بتجربتها أولًا في ملاحظة تجريبية وملف تطوير مستقل.
 
 ## Development and license
 
